@@ -1,5 +1,7 @@
 // const { it, expect } = require("@jest/globals");
 // const { describe } = require("yargs");
+// const { expect } = require("@jest/globals");
+// const { shouldInstrument } = require("@jest/transform");
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
@@ -35,7 +37,17 @@ describe("Manager", () => {
     });
   });
 
-  //   describe("the getRole method should return it's respective key value");
+  describe("the getRole method should return it's respective key value", () => {
+    it("should return Manager when called", () => {
+      //Arrange
+      const newName = "hayden-haun";
+      const newId = "12345";
+      const newEmail = "hayden@gmail";
+      const newOfficeNumber = "555";
+      //Act
+      const newManager = new Manager(newName, newId, newEmail, newOfficeNumber);
 
-  //   it("should return Manager when called", () => {});
+      expect(newManager.getRole()).toEqual("Manager");
+    });
+  });
 });

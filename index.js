@@ -10,98 +10,115 @@ const Manager = require("./lib/Manager");
 
 // Initialize empty arrays
 const idArray = [];
+const teamMembers = [];
 
+//3 Arrays of questions defined for each team member type
 const managerQuestions = [
   {
     type: "input",
-    message: "Please build your team. What is the Manager's Name?",
-    name: "nameManager",
+    message:
+      "Welcome to the Team Profile Generator! What is the Manager's Name?",
+    name: "name",
   },
   {
     type: "input",
     message: "What is the team manager's Employee ID Number?",
-    name: "idManager",
+    name: "id",
   },
   {
     type: "input",
     message: "What is the team manager's Email Address?",
-    name: "emailManager",
+    name: "email",
   },
   {
     type: "input",
     message: "What is the team manager's Office Number?",
-    name: "officeNumberManager",
+    name: "special",
   },
   {
     type: "list",
     message:
-      "Please choose an employee type to add a member to the team, otherwise choose 'Team Finished'",
+      "Please choose an employee role to add a member to the team, otherwise choose DONE",
     name: "nextEmployeeType",
     choices: ["Engineer", "Intern", "DONE"],
   },
 ];
-
 const internQuestions = [
   {
     type: "input",
     message: "What is the intern's name?",
-    name: "nameIntern",
+    name: "name",
   },
   {
     type: "input",
     message: "What is the intern's Employee ID Number?",
-    name: "idIntern",
+    name: "id",
   },
   {
     type: "input",
     message: "What is the intern's Email Address?",
-    name: "emailIntern",
+    name: "email",
   },
   {
     type: "input",
     message: "What School does the intern attend?",
-    name: "schoolIntern",
+    name: "special",
   },
   {
     type: "list",
     message:
-      "Please choose an employee type to add a member to the team, otherwise choose 'Team Finished'",
+      "Please choose an employee type to add a member to the team, otherwise choose DONE",
     name: "nextEmployeeType",
     choices: ["Engineer", "Intern", "DONE"],
   },
 ];
-
 const engineerQuestions = [
   {
     type: "input",
     message: "What is the engineer's name?",
-    name: "nameEngineer",
+    name: "name",
   },
   {
     type: "input",
     message: "What is the engineer's Employee ID Number?",
-    name: "idEngineer",
+    name: "id",
   },
   {
     type: "input",
     message: "What is the engineer's Email Address?",
-    name: "emailEngineer",
+    name: "email",
   },
   {
     type: "input",
     message: "What is the engineer's GitHub Username?",
-    name: "gitHubEngineer",
+    name: "special",
   },
   {
     type: "list",
     message:
-      "Please choose an employee type to add a member to the team, otherwise choose 'Team Finished'",
+      "Please choose an employee type to add a member to the team, otherwise choose DONE",
     name: "nextEmployeeType",
     choices: ["Engineer", "Intern", "DONE"],
   },
 ];
 
-const teamMembers = [];
+function addManager(data) {
+  const newManager = new Manager(data.name, data.id, data.email, data.special);
+  return newManager;
+}
+
+//Initialize function: prompts user with manager questions and loads the data into addManager function
+function init() {
+  inquirer.prompt(managerQuestions).then((data) => {
+    const newEmployee = addManager(data);
+    console.log(newEmployee);
+    // addManager(newEmployee);
+    // generateHTML(newEmployee);
+  });
+}
+
+//Call initialize function
+init();
 
 // // Hello Class!  here is strategy for attacking the team generator homework.  don't have to use it, but i love creating to do lists based on my pseducode
 
@@ -116,14 +133,14 @@ const teamMembers = [];
 // DONE -----  does the name, email, id arguments get set as key/value pairs on the object
 // DONE ----- think about what class is the parent?  they are all employees and all will have name, id, email, engineer, intern, manager will be sub classes
 
-// 3) build out questions for team manager based on requirements
-// please build your team, what is your managers name?
-// what is the team managers id?
-// what is the team managers email?
-// what is the team managers office number?
-// which type of team member would you like to add?  Engineer, Intern, I dont want to add any more team members
+// DONE ----- 3) build out questions for team manager based on requirements
+// DONE ----- please build your team, what is your managers name?
+// DONE ----- what is the team managers id?
+// DONE ----- what is the team managers email?
+// DONE ----- what is the team managers office number?
+// DONE ----- which type of team member would you like to add?  Engineer, Intern, I dont want to add any more team members
 
-// DONE ----- test that a managers object was created from the class with the correct data!!!!
+// test that a managers object was created from the class with the correct data!!!!
 
 // 4) create a base static HTML layout for the cards
 

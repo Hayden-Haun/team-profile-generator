@@ -8,6 +8,8 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
+const renderHTML = require("./lib/renderHTML.js");
+
 // Initialize empty arrays
 const idArray = [];
 const teamMembers = [];
@@ -104,11 +106,6 @@ const engineerQuestions = [
 
 //  -----   FUNCTIONS   -----
 
-// When the user chooses DONE for the next employee type, the renderHTML() function is called.
-function renderHTML() {
-  console.log(teamMembers);
-  console.log(idArray);
-}
 //  Takes data answered in manager prompt and creates a new Manager object. Appends this to the team array.
 function addIntern(data) {
   const newIntern = new Intern(data.name, data.id, data.email, data.special);
@@ -133,7 +130,7 @@ function initIntern() {
         idArray.push("Intern");
         break;
       case "DONE":
-        response = renderHTML();
+        response = renderHTML(idArray, teamMembers);
         break;
     }
     return response;
@@ -169,7 +166,7 @@ function initEngineer() {
         idArray.push("Intern");
         break;
       case "DONE":
-        response = renderHTML();
+        response = renderHTML(idArray, teamMembers);
         break;
     }
     return response;
@@ -201,7 +198,7 @@ function initManager() {
         idArray.push("Intern");
         break;
       case "DONE":
-        response = renderHTML();
+        response = renderHTML(idArray, teamMembers);
         break;
     }
     return response;
@@ -231,7 +228,7 @@ initManager();
 // DONE ----- what is the team managers office number?
 // DONE ----- which type of team member would you like to add?  Engineer, Intern, I dont want to add any more team members
 
-// test that a managers object was created from the class with the correct data!!!!
+// DONE ------- test that a managers object was created from the class with the correct data!!!!
 
 // 4) create a base static HTML layout for the cards
 

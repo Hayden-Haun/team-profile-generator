@@ -23,6 +23,8 @@
   "homepage": "https://github.com/Hayden-Haun/team-profile-generator#readme",
   "dependencies": {
     "inquirer": "^8.1.2",
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "jquery": "^3.6.0",
+    "jsdom": "^17.0.0"
   }
 }

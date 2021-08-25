@@ -2,6 +2,7 @@
 const Employee = require("../lib/Employee");
 const Engineer = require("../lib/Engineer");
 
+//3 tests for Engineer subclass
 describe("Engineer", () => {
   describe("new object should be created when called and have values equal to the input parameters", () => {
     it("should create an object when called", () => {

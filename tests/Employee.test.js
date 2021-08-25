@@ -2,6 +2,7 @@
 // const { describe } = require("yargs");
 const Employee = require("../lib/Employee");
 
+//6 tests for Employee class
 describe("Employee", () => {
   describe("new object should be created when called and have values equal to the input parameters", () => {
     it("should be created when called", () => {

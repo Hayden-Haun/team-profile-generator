@@ -5,6 +5,7 @@
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
+//3 tests for Manager class
 describe("Manager", () => {
   describe("new object should be created when called and have values equal to the input parameters", () => {
     it("should be created when called", () => {

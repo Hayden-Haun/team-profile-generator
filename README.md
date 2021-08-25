@@ -1,6 +1,6 @@
 # TEAM PROFILE GENERATOR
 
-LIVE WALKTHROUGH VIDEO:
+LIVE WALKTHROUGH VIDEO: https://drive.google.com/file/d/1jmXcJaywoRB3YOf7JdFLbB_WACh6AwLJ/view
 
 REPOSITORY: https://github.com/Hayden-Haun/team-profile-generator
 

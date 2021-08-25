@@ -102,23 +102,114 @@ const engineerQuestions = [
   },
 ];
 
+//  -----   FUNCTIONS   -----
+
+// When the user chooses DONE for the next employee type, the renderHTML() function is called.
+function renderHTML() {
+  console.log(teamMembers);
+  console.log(idArray);
+}
+//  Takes data answered in manager prompt and creates a new Manager object. Appends this to the team array.
+function addIntern(data) {
+  const newIntern = new Intern(data.name, data.id, data.email, data.special);
+  return newIntern;
+}
+
+//  Initialize Engineer function: prompts user with Engineer questions and passes the data into addEngineer function
+function initIntern() {
+  inquirer.prompt(internQuestions).then((data) => {
+    const newEmployee = addIntern(data);
+    const nextType = data.nextEmployeeType;
+
+    teamMembers.push(newEmployee);
+
+    switch (nextType) {
+      case "Engineer":
+        response = initEngineer();
+        idArray.push("Engineer");
+        break;
+      case "Intern":
+        response = initIntern();
+        idArray.push("Intern");
+        break;
+      case "DONE":
+        response = renderHTML();
+        break;
+    }
+    return response;
+  });
+}
+
+//  Takes data answered in manager prompt and creates a new Manager object. Appends this to the team array.
+function addEngineer(data) {
+  const newEngineer = new Engineer(
+    data.name,
+    data.id,
+    data.email,
+    data.special
+  );
+  return newEngineer;
+}
+
+//  Initialize Engineer function: prompts user with Engineer questions and passes the data into addEngineer function
+function initEngineer() {
+  inquirer.prompt(engineerQuestions).then((data) => {
+    const newEmployee = addEngineer(data);
+    const nextType = data.nextEmployeeType;
+
+    teamMembers.push(newEmployee);
+
+    switch (nextType) {
+      case "Engineer":
+        response = initEngineer();
+        idArray.push("Engineer");
+        break;
+      case "Intern":
+        response = initIntern();
+        idArray.push("Intern");
+        break;
+      case "DONE":
+        response = renderHTML();
+        break;
+    }
+    return response;
+  });
+}
+
+//  Takes data answered in manager prompt and creates a new Manager object. Appends this to the team array.
 function addManager(data) {
   const newManager = new Manager(data.name, data.id, data.email, data.special);
   return newManager;
 }
 
-//Initialize function: prompts user with manager questions and loads the data into addManager function
-function init() {
+//Initialize Manager function: prompts user with manager questions and passes the data into addManager function
+function initManager() {
   inquirer.prompt(managerQuestions).then((data) => {
     const newEmployee = addManager(data);
-    console.log(newEmployee);
-    // addManager(newEmployee);
-    // generateHTML(newEmployee);
+    const nextType = data.nextEmployeeType;
+
+    teamMembers.push(newEmployee);
+    idArray.push("Manager");
+
+    switch (nextType) {
+      case "Engineer":
+        response = initEngineer();
+        idArray.push("Engineer");
+        break;
+      case "Intern":
+        response = initIntern();
+        idArray.push("Intern");
+        break;
+      case "DONE":
+        response = renderHTML();
+        break;
+    }
+    return response;
   });
 }
 
 //Call initialize function
-init();
+initManager();
 
 // // Hello Class!  here is strategy for attacking the team generator homework.  don't have to use it, but i love creating to do lists based on my pseducode
 

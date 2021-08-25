@@ -13,7 +13,7 @@ describe("Employee", () => {
       expect(typeof newEmployee).toEqual("object");
     });
 
-    it("should have parameters equal to the input values", () => {
+    it("should have values equal to the input parameters", () => {
       //Arrange
       const newName = "hayden-haun";
       const newId = "12345";
